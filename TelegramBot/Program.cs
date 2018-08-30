@@ -36,9 +36,14 @@ namespace TelegramBot
             //BotClient.PinChatMessageAsync(Settings.Current.ChatId, msg.MessageId);
         }
 
-        static void OnVersionChange(Version_t version)
+        static void OnVersionChange(Version_t oldVersion, Version_t newVersion)
         {
-            string text = $"CS:GO was updated to version {version.PatchVersion} at {version.VersionDate} {version.VersionTime}";
+            // Please someone fix my english
+            string text;
+            if (oldVersion.PatchVersion == newVersion.PatchVersion)
+                text = $"CS:GO was updated, but version didn't changed. It means that update was pretty small, and may be not announced.\nClient version: {newVersion.ClientVersion}";
+            else
+                text = $"CS:GO was updated to version {newVersion.PatchVersion} at {newVersion.VersionDate} {newVersion.VersionTime}";
 
             Logger.Log(text);
             var msg = BotClient.SendTextMessageAsync(Settings.Current.ChatId, text).Result;

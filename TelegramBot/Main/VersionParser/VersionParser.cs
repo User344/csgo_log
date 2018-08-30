@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace TelegramBot
 {
-    public delegate void OnVersionChange(Version_t version);
+    public delegate void OnVersionChange(Version_t oldVersion, Version_t newVersion);
     
     public class VersionParser
     {
@@ -60,7 +60,7 @@ namespace TelegramBot
 
             if (version != CurrentVersion)
             {
-                OnVersionChange(version);
+                OnVersionChange(CurrentVersion, version);
                 CurrentVersion = version;
             }
 
