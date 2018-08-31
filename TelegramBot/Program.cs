@@ -57,9 +57,11 @@ namespace TelegramBot
             {
                 Thread.Sleep(TimeSpan.FromSeconds(Settings.Current.TimerSeconds));
 
+#if DEBUG
                 //VersionParser.QuickTest();
-                BlogParser.QuickTest();
-                UpdatesParser.QuickTest();
+                //BlogParser.QuickTest();
+                //UpdatesParser.QuickTest();
+#endif
 
                 VersionParser.Parse();
                 BlogParser.Parse();
