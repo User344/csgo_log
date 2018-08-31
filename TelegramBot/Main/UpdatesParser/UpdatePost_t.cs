@@ -9,6 +9,7 @@ namespace TelegramBot
 {
     public class UpdatePost_t
     {
+        public string Url;
         public string Title;
         public string Text;
 
@@ -21,7 +22,10 @@ namespace TelegramBot
         {
             try
             {
-                Title = node.ChildNodes.Where(x => (x.Name == "h2")).First().InnerText;
+                var TitleNode = node.ChildNodes.Where(x => (x.Name == "h2")).First();
+                Title = TitleNode.InnerText;
+                Url = TitleNode.ChildNodes.Where(x => (x.Name == "a")).First().Attributes.Where(x => (x.Name == "href")).First().Value;
+
                 foreach (var child in node.ChildNodes)
                 {
                     if (child.Name != "p" ||

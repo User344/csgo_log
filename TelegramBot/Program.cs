@@ -20,7 +20,7 @@ namespace TelegramBot
 
         static void OnNewBlogPost(BlogPost_t post)
         {
-            string text = $"<b>{post.Title}</b>\n\n{post.Text}";
+            string text = $"<a href=\'{post.Url}\'>{post.Title}</a>\n\n{post.Text}";
 
             Logger.Log($"New blog post: {post.Title}");
             var msg = BotClient.SendTextMessageAsync(Settings.Current.ChatId, text, Telegram.Bot.Types.Enums.ParseMode.Html).Result;
@@ -29,7 +29,7 @@ namespace TelegramBot
 
         static void OnNewUpdatePost(UpdatePost_t post)
         {
-            string text = $"<b>{post.Title}</b>\n\n{post.Text}";
+            string text = $"<a href=\'{post.Url}\'>{post.Title}</a>\n\n{post.Text}";
 
             Logger.Log($"New updates post: {post.Title}");
             var msg = BotClient.SendTextMessageAsync(Settings.Current.ChatId, text, Telegram.Bot.Types.Enums.ParseMode.Html).Result;
@@ -58,8 +58,8 @@ namespace TelegramBot
                 Thread.Sleep(TimeSpan.FromSeconds(Settings.Current.TimerSeconds));
 
                 //VersionParser.QuickTest();
-                //BlogParser.QuickTest();
-                //UpdatesParser.QuickTest();
+                BlogParser.QuickTest();
+                UpdatesParser.QuickTest();
 
                 VersionParser.Parse();
                 BlogParser.Parse();
