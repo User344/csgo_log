@@ -41,7 +41,7 @@ namespace TelegramBot
             // Please someone fix my english
             string text;
             if (oldVersion.PatchVersion == newVersion.PatchVersion)
-                text = $"CS:GO was updated, but version didn't changed. It means that update was pretty small, and may be not announced.\nClient version: {newVersion.ClientVersion}";
+                text = $"CS:GO was updated, but version didn't changed. It means that update was pretty small.";
             else
                 text = $"CS:GO was updated to version {newVersion.PatchVersion} at {newVersion.VersionDate} {newVersion.VersionTime}";
 
@@ -64,7 +64,9 @@ namespace TelegramBot
 #endif
 
                 VersionParser.Parse();
+                Thread.Sleep(1000);
                 BlogParser.Parse();
+                Thread.Sleep(1000);
                 UpdatesParser.Parse();
             }
         }

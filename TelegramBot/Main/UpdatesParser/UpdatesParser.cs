@@ -35,11 +35,15 @@ namespace TelegramBot
 
         public string RequestWeb(string link)
         {
-            WebClient = new WebClient();
-            var data = WebClient.DownloadString(link);
-            WebClient.Dispose();
-            WebClient = null;
-            return data;
+            try {
+                WebClient = new WebClient();
+                var data = WebClient.DownloadString(link);
+                WebClient.Dispose();
+                WebClient = null;
+                return data;
+            } catch {
+                return "";
+            }
         }
 
         public void QuickTest()
