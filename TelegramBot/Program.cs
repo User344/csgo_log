@@ -23,8 +23,7 @@ namespace TelegramBot
             string text = $"<a href=\'{post.Url}\'>{post.Title}</a>\n\n{post.Text}";
 
             Logger.Log($"New blog post: {post.Title}");
-            var msg = BotClient.SendTextMessageAsync(Settings.Current.ChatId, text, Telegram.Bot.Types.Enums.ParseMode.Html).Result;
-            //BotClient.PinChatMessageAsync(Settings.Current.ChatId, msg.MessageId);
+            BotClient.SendTextMessageAsync(Settings.Current.ChatId, text, Telegram.Bot.Types.Enums.ParseMode.Html);
         }
 
         static void OnNewUpdatePost(UpdatePost_t post)
@@ -32,22 +31,19 @@ namespace TelegramBot
             string text = $"<a href=\'{post.Url}\'>{post.Title}</a>\n\n{post.Text}";
 
             Logger.Log($"New updates post: {post.Title}");
-            var msg = BotClient.SendTextMessageAsync(Settings.Current.ChatId, text, Telegram.Bot.Types.Enums.ParseMode.Html).Result;
-            //BotClient.PinChatMessageAsync(Settings.Current.ChatId, msg.MessageId);
+            BotClient.SendTextMessageAsync(Settings.Current.ChatId, text, Telegram.Bot.Types.Enums.ParseMode.Html);
         }
 
         static void OnVersionChange(Version_t oldVersion, Version_t newVersion)
         {
-            // Please someone fix my english
-            string text;
+            string text = $"CS:GO was updated to version {newVersion.PatchVersion} at {newVersion.VersionDate} {newVersion.VersionTime}";
+
             if (oldVersion.PatchVersion == newVersion.PatchVersion)
-                text = $"CS:GO was updated, but version didn't changed. It means that update was pretty small.";
-            else
-                text = $"CS:GO was updated to version {newVersion.PatchVersion} at {newVersion.VersionDate} {newVersion.VersionTime}";
+                return;
+            //    text = $"CS:GO was updated, but version didn't changed. It means that update was pretty small.";
 
             Logger.Log(text);
-            var msg = BotClient.SendTextMessageAsync(Settings.Current.ChatId, text).Result;
-            //BotClient.PinChatMessageAsync(Settings.Current.ChatId, msg.MessageId);
+            BotClient.SendTextMessageAsync(Settings.Current.ChatId, text);
         }
 
         // Main program loop
