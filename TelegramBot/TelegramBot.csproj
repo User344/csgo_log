@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Adfa.Telegraph.Net, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telegraph.Net.1.1.0\lib\net45\Adfa.Telegraph.Net.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.7\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -40,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,12 +55,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main\BlogParser\BlogParser.cs" />
-    <Compile Include="Main\BlogParser\BlogPost_t.cs" />
-    <Compile Include="Main\UpdatesParser\UpdatePost_t.cs" />
-    <Compile Include="Main\UpdatesParser\UpdatesParser.cs" />
-    <Compile Include="Main\VersionParser\VersionParser.cs" />
-    <Compile Include="Main\VersionParser\Version_t.cs" />
+    <Compile Include="Managers\CrashManager.cs" />
+    <Compile Include="Managers\NotifyManager.cs" />
+    <Compile Include="Managers\ParserManager.cs" />
+    <Compile Include="Parsers\BaseParser\BaseParser.cs" />
+    <Compile Include="Parsers\BlogParser\BlogParser.cs" />
+    <Compile Include="Parsers\BlogParser\BlogPost.cs" />
+    <Compile Include="Parsers\BaseParser\BasePost.cs" />
+    <Compile Include="Parsers\UpdatesParser\UpdatePost.cs" />
+    <Compile Include="Parsers\UpdatesParser\UpdatesParser.cs" />
     <Compile Include="Other\Logger.cs" />
     <Compile Include="Other\Settings.cs" />
     <Compile Include="Program.cs" />

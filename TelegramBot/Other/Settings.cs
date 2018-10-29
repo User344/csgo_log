@@ -17,7 +17,8 @@ namespace TelegramBot.Other
     public class Settings_
     {
         public double TimerSeconds;
-        public string BotToken;
+        public string TelegramToken;
+        public string TelegraphToken;
         public string ChatId;
     }
 
@@ -34,10 +35,11 @@ namespace TelegramBot.Other
         {
             Settings.Current = new Settings_();
             Settings.Current.TimerSeconds = 10;
-            Settings.Current.BotToken = "";
+            Settings.Current.TelegramToken = "";
+            Settings.Current.TelegraphToken = "";
             Settings.Current.ChatId = "@csgo_log";
 
-            return false;
+            return true;
         }
     }
 }

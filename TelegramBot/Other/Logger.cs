@@ -24,7 +24,9 @@ namespace TelegramBot.Other
         private static void Log(string prefix, ConsoleColor color, string text)
         {
             Console.ForegroundColor = color;
-            Console.WriteLine($"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToLongTimeString()} [{prefix}] {text}");
+            foreach (var line in text.Split('\n')) {
+                Console.WriteLine($"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToLongTimeString()} [{prefix}] {line}");
+            }
             Console.ResetColor();
         }
 

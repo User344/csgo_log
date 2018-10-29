@@ -4,21 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TelegramBot.Parsers;
 
-namespace TelegramBot
+namespace TelegramBot.Parsers
 {
-    public class UpdatePost_t
+    public class UpdatePost: BasePost
     {
-        public string Url;
-        public string Title;
-        public string Text;
-
-        public UpdatePost_t()
+        public UpdatePost()
         {
 
         }
 
-        public bool Parse(HtmlNode node)
+        public override bool Parse(HtmlNode node)
         {
             try
             {
@@ -35,32 +32,13 @@ namespace TelegramBot
                     Text += child.InnerText + "\n\n";
                 }
 
+                this.Node = node;
                 return true;
             }
             catch
             {
                 return false;
             }
-        }
-
-        public static bool operator ==(UpdatePost_t rhs, UpdatePost_t lhs)
-        {
-            if (object.ReferenceEquals(lhs, null))
-            {
-                if (object.ReferenceEquals(rhs, null))
-                {
-                    return true;
-                }
-
-                return false;
-            }
-
-            return rhs.Title == lhs.Title;
-        }
-
-        public static bool operator !=(UpdatePost_t rhs, UpdatePost_t lhs)
-        {
-            return !(rhs == lhs);
         }
     }
 }
