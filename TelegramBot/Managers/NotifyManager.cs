@@ -30,7 +30,7 @@ namespace TelegramBot.Managers
             string text = post.FormatText();
             string content = $"{title}\n\n{text}";
 
-            var message = TelegramClient.SendTextMessageAsync(Settings.Current.ChatId, content, Telegram.Bot.Types.Enums.ParseMode.Markdown, true).Result;
+            var message = TelegramClient.SendTextMessageAsync(Settings.Current.ChatId, content, Telegram.Bot.Types.Enums.ParseMode.Html, true).Result;
             
             try
             {

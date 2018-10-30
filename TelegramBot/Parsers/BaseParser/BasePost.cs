@@ -17,7 +17,7 @@ namespace TelegramBot.Parsers
         
         public string FormatTitle()
         {
-            return $"[{this.Title}]({this.Url})";
+            return $"<a href=\'{this.Url}\'>{this.Title}</a>";
         }
 
         public string FormatText()

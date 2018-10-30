@@ -53,8 +53,8 @@ namespace TelegramBot.Parsers
                             {
                                 var hrefList = childNode.Attributes.Where(x => x.Name == "href");
                                 if (hrefList.Count() <= 0) continue;
-
-                                Text += $"[{childNode.InnerText}]({hrefList.First().Value})";
+                                
+                                Text += $"<a href=\'{hrefList.First().Value}\'>{childNode.InnerText}</a>";
                             }
                         }
 
